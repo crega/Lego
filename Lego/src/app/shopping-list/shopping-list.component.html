@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-10">
+    <app-shopping-edit></app-shopping-edit>
+    <hr>
+    <ul class="list-group">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let kocka of kocke; let i = index"
+        (click)="onEditItem(i)"
+      >
+        {{ kocka.dimenzija }} ({{ kocka.kolicina }})
+      </a>
+    </ul>
+  </div>
+</div>
