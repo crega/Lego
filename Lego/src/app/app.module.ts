@@ -36,6 +36,7 @@ import { BuildingItemComponent } from './buildings/buildings-list/building-item/
     BuildingListComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -47,4 +48,6 @@ import { BuildingItemComponent } from './buildings/buildings-list/building-item/
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
