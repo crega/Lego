@@ -13,6 +13,7 @@ import { BuildingsService } from '../buildings.service';
 export class BuildingEditComponent implements OnInit {
   id: number;
   editMode = false;
+  buildingManualPath: string;
   buildingForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -60,6 +61,10 @@ export class BuildingEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
+  jumpOut() {
+      window.open(this.buildingManualPath);
+  }
+
   private initForm() {
     let buildingName = '';
     let buildingImagePath = '';
@@ -72,7 +77,8 @@ export class BuildingEditComponent implements OnInit {
       buildingName = building.name;
       buildingImagePath = building.imagePath;
       buildingDescription = building.description;
-      buildingManualPath = building.instructionURL;
+      buildingManualPath = building.manualPath;
+      this.buildingManualPath = buildingManualPath;
       if (building['kocke']) {
         for (const kocka of building.kocke) {
           buildingKocke.push(
@@ -87,7 +93,7 @@ export class BuildingEditComponent implements OnInit {
         }
       }
     }
-
+    console.log(buildingManualPath);
     this.buildingForm = new FormGroup({
       'name': new FormControl(buildingName, Validators.required),
       'imagePath': new FormControl(buildingImagePath, Validators.required),
@@ -95,6 +101,7 @@ export class BuildingEditComponent implements OnInit {
       'manualPath' : new FormControl(buildingManualPath, Validators.required),
       'kocke': buildingKocke
     });
+    console.log(this.buildingForm.get('kocke'));
   }
 
 }

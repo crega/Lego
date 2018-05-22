@@ -7,7 +7,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { BuildingStartComponent } from './buildings/buildings-strat/building-start.component';
-import { BuildingEditComponent } from './buildings/buildings-edit/recipe-edit.component';
+import { BuildingEditComponent } from './buildings/buildings-edit/building-edit.component';
 import { BuildingDetailComponent } from './buildings/building-detail/building-detail.component';
 
 const appRoutes: Routes = [

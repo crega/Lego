@@ -35,6 +35,9 @@ export class BuildingDetailComponent implements OnInit {
     this.router.navigate(['edit'], {relativeTo: this.route});
 
   }
+  jumpOut() {
+    window.open(this.building.manualPath);
+}
 
   onDeleteRecipe() {
     this.bS.deleteBuilding(this.id);

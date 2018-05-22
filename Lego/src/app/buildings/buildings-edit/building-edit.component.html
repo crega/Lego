@@ -62,19 +62,16 @@
             <div class="form-group">
               <label for="manualPath">Manual URL</label>
               <input
+                [value]="buildingManualPath"
                 type="text"
                 id="manualPath"
                 formControlName="manualPath"
                 class="form-control"
-                #manualPath>
+                >
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <img [src]="manualPath.value" class="img-responsive">
-          </div>
-        </div>
+
       <div class="row">
         <div class="col-xs-12" formArrayName="kocke">
           <div

@@ -20,10 +20,11 @@ export class BuildingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.bs.recipesChanged
+    this.subscription = this.bs.buildingsChanged
       .subscribe(
         (buildings: Building[]) => {
           this.buildings = buildings;
+          console.log(this.buildings);
         }
       );
     this.buildings = this.bs.getBuildings();

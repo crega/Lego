@@ -14,7 +14,7 @@ export class HeaderComponent {
   }
 
   onSaveData() {
-    this.dataStorageService.storeRecipes()
+    this.dataStorageService.storeBuildings()
       .subscribe(
         (response: Response) => {
           console.log(response);
@@ -23,7 +23,7 @@ export class HeaderComponent {
   }
 
   onFetchData() {
-    this.dataStorageService.getRecipes();
+    this.dataStorageService.getBuildings();
   }
 
   onLogout() {

@@ -12,7 +12,7 @@ import { ShoppingEditComponent } from 'src/app/shopping-list/shopping-edit/shopp
 import { BuildingsComponent } from './buildings/buildings.component';
 import { BuildingStartComponent } from 'src/app/buildings/buildings-strat/building-start.component';
 import { BuildingDetailComponent } from './buildings//building-detail/building-detail.component';
-import { BuildingEditComponent } from './buildings/buildings-edit/recipe-edit.component';
+import { BuildingEditComponent } from './buildings/buildings-edit/building-edit.component';
 import { BuildingListComponent } from 'src/app/buildings/buildings-list/building-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

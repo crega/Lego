@@ -9,7 +9,7 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 })
 export class BuildingsService {
 
-  recipesChanged = new Subject<Building[]>();
+  buildingsChanged = new Subject<Building[]>();
 
   private building: Building[] = [
     new Building(
@@ -46,10 +46,11 @@ export class BuildingsService {
 
   setBuildings(building: Building[]) {
     this.building = building;
-    this.recipesChanged.next(this.building.slice());
+    this.buildingsChanged.next(this.building.slice());
   }
 
   getBuildings() {
+    console.log(this.building);
     return this.building.slice();
   }
 
@@ -63,16 +64,16 @@ export class BuildingsService {
 
   addBuilding(building: Building) {
     this.building.push(building);
-    this.recipesChanged.next(this.building.slice());
+    this.buildingsChanged.next(this.building.slice());
   }
 
   updateBuilding(index: number, newBuilding: Building) {
     this.building[index] = newBuilding;
-    this.recipesChanged.next(this.building.slice());
+    this.buildingsChanged.next(this.building.slice());
   }
 
   deleteBuilding(index: number) {
     this.building.splice(index, 1);
-    this.recipesChanged.next(this.building.slice());
+    this.buildingsChanged.next(this.building.slice());
   }
 }

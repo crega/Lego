@@ -14,35 +14,19 @@ export class DataStorageService {
     private authService: AuthService) {
   }
 
-  storeRecipes() {
+  storeBuildings() {
     const token = this.authService.getToken();
 
     return this.http.put('https://legokartasi.firebaseio.com/buildings.json?auth=' + token, this.bs.getBuildings());
   }
 
-  getRecipes() {
+  getBuildings() {
     const token = this.authService.getToken();
 
-    // this.http.get('https://legokartasi.firebaseio.com/buildings.json?auth=' + token)
-    //   .map(
-    //     (response: Response) => {
-    //       const buildings: Building[] = response.json();
-    //       for (const building of buildings) {
-    //         if (!building['kocke']) {
-    //           recipe['kocke'] = [];
-    //         }
-    //       }
-    //       return buildings;
-    //     }
-    //   )
-    //   .subscribe(
-    //     (buildings: Building[]) => {
-    //       this.bs.setBuildings(buildings);
-    //     }
-    //   );
     this.http.get<Building[]>('https://legokartasi.firebaseio.com/buildings.json?auth=' + token).subscribe(
       data => {
         const builds: Building[] = data;
+        console.log(builds);
         if (builds !== null) {
         builds.forEach(element => {
           if (!element['kocke']) {
