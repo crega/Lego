@@ -68,13 +68,13 @@ export class BuildingEditComponent implements OnInit {
     const buildingKocke = new FormArray([]);
 
     if (this.editMode) {
-      const recipe = this.bS.getBuilding(this.id);
-      buildingName = recipe.name;
-      buildingImagePath = recipe.imagePath;
-      buildingDescription = recipe.description;
-      buildingManualPath = recipe.instructionURL;
-      if (recipe['kocke']) {
-        for (const kocka of recipe.kocke) {
+      const building = this.bS.getBuilding(this.id);
+      buildingName = building.name;
+      buildingImagePath = building.imagePath;
+      buildingDescription = building.description;
+      buildingManualPath = building.instructionURL;
+      if (building['kocke']) {
+        for (const kocka of building.kocke) {
           buildingKocke.push(
             new FormGroup({
               'dimenzija': new FormControl(kocka.dimenzija, Validators.required),

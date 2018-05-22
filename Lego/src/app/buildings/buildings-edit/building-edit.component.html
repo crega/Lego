@@ -75,18 +75,11 @@
             <img [src]="manualPath.value" class="img-responsive">
           </div>
         </div>
-
-
-
-
-
-
-
       <div class="row">
         <div class="col-xs-12" formArrayName="kocke">
           <div
             class="row"
-            *ngFor="let kockaCtrl of recipeForm.get('kocke').controls; let i = index"
+            *ngFor="let kockaCtrl of buildingForm.get('kocke').controls; let i = index"
             [formGroupName]="i"
             style="margin-top: 10px;">
             <div class="col-xs-8">
@@ -114,7 +107,7 @@
               <button
                 type="button"
                 class="btn btn-success"
-                (click)="onAddkocka()">Add Ingredient</button>
+                (click)="onAddkocka()">Add Blocks</button>
             </div>
           </div>
         </div>

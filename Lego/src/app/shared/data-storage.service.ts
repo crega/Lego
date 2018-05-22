@@ -43,11 +43,13 @@ export class DataStorageService {
     this.http.get<Building[]>('https://legokartasi.firebaseio.com/buildings.json?auth=' + token).subscribe(
       data => {
         const builds: Building[] = data;
+        if (builds !== null) {
         builds.forEach(element => {
           if (!element['kocke']) {
               element['kocke'] = [];
           }
         });
+      }
         this.bs.setBuildings(builds);
       }
     );
