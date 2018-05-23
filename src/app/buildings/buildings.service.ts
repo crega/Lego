@@ -3,6 +3,7 @@ import { Building } from 'src/app/buildings/building.model';
 import { Subject } from 'rxjs';
 import { Kocka } from '../shared/kocka.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { AlertService } from '../alert/alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +43,8 @@ export class BuildingsService {
     ])
   ];
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(private slService: ShoppingListService,
+              private alertService: AlertService) {}
 
   setBuildings(building: Building[]) {
     this.building = building;
@@ -59,21 +61,25 @@ export class BuildingsService {
   }
 
   addBlocksToShoppingList(kocke: Kocka[]) {
-    this.slService.addIngredients(kocke);
+    this.slService.addBlocks(kocke);
+    this.alertService.success('Successfully added building blocks to shopping cart!');
   }
 
   addBuilding(building: Building) {
     this.building.push(building);
-    this.buildingsChanged.next(this.building.slice());
+    this.buildingsChanged.next(this.building.slice())
+    this.alertService.success('Successfully added a new building!');
   }
 
   updateBuilding(index: number, newBuilding: Building) {
     this.building[index] = newBuilding;
-    this.buildingsChanged.next(this.building.slice());
+    this.buildingsChanged.next(this.building.slice())
+    this.alertService.success('Successfully updated the building!');
   }
 
   deleteBuilding(index: number) {
     this.building.splice(index, 1);
     this.buildingsChanged.next(this.building.slice());
+    this.alertService.success('Successfully deleted the building!');
   }
 }
