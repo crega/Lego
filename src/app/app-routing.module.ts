@@ -9,9 +9,10 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { BuildingStartComponent } from './buildings/buildings-strat/building-start.component';
 import { BuildingEditComponent } from './buildings/buildings-edit/building-edit.component';
 import { BuildingDetailComponent } from './buildings/building-detail/building-detail.component';
+import { AlertComponent } from './alert/alert.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/buildings', pathMatch: 'full' },
+  { path: '', component: AlertComponent },
   { path: 'buildings', component: BuildingsComponent, children: [
     { path: '', component: BuildingStartComponent },
     { path: 'new', component: BuildingEditComponent, canActivate: [AuthGuardService] },

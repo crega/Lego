@@ -9,14 +9,14 @@ import { AlertService } from './alert.service'
 })
 
 export class AlertComponent implements OnInit {
-  @Input() id: string;
+  @Input() id: number;
 
   alerts: Alert[] = [];
 
   constructor (private alertService: AlertService) {}
 
   ngOnInit(){
-    this.alertService.getAlert(this.id).subscribe((alert: Alert) => {
+    this.alertService.getAlert().subscribe((alert: Alert) => {
         this.alerts.push(alert);
       }
     );

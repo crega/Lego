@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
-import { Subject } from 'rxjs'
+import { Subject, Observable } from 'rxjs'
 
 import { Alert, AlertType } from './alert'
 
@@ -8,22 +7,22 @@ import { Alert, AlertType } from './alert'
   providedIn: 'root'
 })
 export class AlertService {
-  private alerts: Alert[] = [];
+  private subject = new Subject<Alert>();
 
-  getAlert(id: string){
-    return this.alerts[id];
+  getAlert(): Observable<Alert> {
+    return this.subject.asObservable();
   }
 
   success(message: string){
-    this.alerts.push(new Alert(message, AlertType.Success));
+    this.subject.next(new Alert(message, AlertType.Success));
   }
 
   error(message: string){
-    this.alerts.push(new Alert(message, AlertType.Error));
+    this.subject.next(new Alert(message, AlertType.Error));
   }
 
   warning(message: string){
-    this.alerts.push(new Alert(message, AlertType.Warning));
+    this.subject.next(new Alert(message, AlertType.Warning));
   }
 
 }

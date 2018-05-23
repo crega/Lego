@@ -15,9 +15,12 @@ export class AuthService {
 
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .catch(
-        error => console.log(error)
-      );
+    .catch(error =>{
+        this.alertService.error(error);
+        console.log(error)   
+    });
+
+    this.alertService.success('Successfully signed up!');
   }
 
   signinUser(email: string, password: string) {
@@ -25,21 +28,22 @@ export class AuthService {
       .then(
         response => {
           this.router.navigate(['/']);
-          this.alertService.success('Successfully signed in!');
-          console.log(this.alertService.getAlert("0"));
+          this.alertService.success('Successfully logged in!');
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => this.token = token
             );
         }
       )
-      .catch(
-        error => console.log(error)
-      );
+      .catch(error => {
+        this.alertService.error(error);
+        console.log(error)
+      });
   }
 
   logout() {
     firebase.auth().signOut();
+    this.alertService.success('Successfully logged out!');
     this.token = null;
   }
 
