@@ -11,13 +11,14 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class BuildingDetailComponent implements OnInit {
   building: Building;
   id: number;
-
+  flag: boolean;
   constructor(private bS: BuildingsService,
               private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.flag = false;
     this.route.params
       .subscribe(
         (params: Params) => {
@@ -25,6 +26,11 @@ export class BuildingDetailComponent implements OnInit {
           this.building = this.bS.getBuilding(this.id);
         }
       );
+  }
+
+  addCommentClicked() {
+    this.flag = true;
+
   }
 
   onAddToShoppingList() {

@@ -3,6 +3,7 @@ import { Building } from 'src/app/buildings/building.model';
 import { Subject } from 'rxjs';
 import { Kocka } from '../shared/kocka.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { BComment } from '../comment/comment.component.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,14 @@ export class BuildingsService {
         new Kocka('12x2', 50),
         new Kocka('8x2', 50),
         new Kocka('50x50', 4)
-      ]),
+      ],
+      [
+        new BComment ('vice.crega@gmail.com', 'Awsome work! Keep it up!'),
+        new BComment ('branfili@gmail.com', 'El classico of Lego!'),
+
+      ])
+
+      ,
     new Building( 'BIG BEN',
     'Tower of London',
     // tslint:disable-next-line:max-line-length
@@ -39,6 +47,11 @@ export class BuildingsService {
       new Kocka('8x2', 120),
       new Kocka('50x50', 2),
       new Kocka('25x25', 12)
+    ],
+    [
+      new BComment ('vice.crega@gmail.com', 'Nice one!'),
+      new BComment ('branfili@gmail.com', 'True symbol!'),
+
     ])
   ];
 
@@ -59,7 +72,7 @@ export class BuildingsService {
   }
 
   addBlocksToShoppingList(kocke: Kocka[]) {
-    this.slService.addIngredients(kocke);
+    this.slService.addKocke(kocke);
   }
 
   addBuilding(building: Building) {
@@ -68,8 +81,12 @@ export class BuildingsService {
   }
 
   updateBuilding(index: number, newBuilding: Building) {
+    console.log(index);
+    console.log(newBuilding);
+    console.log(this.building[index]);
     this.building[index] = newBuilding;
     this.buildingsChanged.next(this.building.slice());
+    console.log(this.building[index]);
   }
 
   deleteBuilding(index: number) {

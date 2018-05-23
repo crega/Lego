@@ -56,6 +56,9 @@ export class BuildingEditComponent implements OnInit {
   onDeletekocka(index: number) {
     (<FormArray>this.buildingForm.get('kocke')).removeAt(index);
   }
+  onDeleteComment(index: number) {
+    (<FormArray>this.buildingForm.get('comments')).removeAt(index);
+  }
 
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
@@ -71,6 +74,7 @@ export class BuildingEditComponent implements OnInit {
     let buildingDescription = '';
     let buildingManualPath = '';
     const buildingKocke = new FormArray([]);
+    const buildingComments = new FormArray([]);
 
     if (this.editMode) {
       const building = this.bS.getBuilding(this.id);
@@ -92,6 +96,20 @@ export class BuildingEditComponent implements OnInit {
           );
         }
       }
+      if (building['comments']) {
+        for (const comment of building.comments) {
+          buildingComments.push(
+            new FormGroup({
+              'userEmail': new FormControl(comment.userEmail, Validators.required),
+              'text': new FormControl(comment.text, [
+                Validators.required,
+              ])
+            })
+          );
+        }
+      }
+
+
     }
     console.log(buildingManualPath);
     this.buildingForm = new FormGroup({
@@ -99,9 +117,11 @@ export class BuildingEditComponent implements OnInit {
       'imagePath': new FormControl(buildingImagePath, Validators.required),
       'description': new FormControl(buildingDescription, Validators.required),
       'manualPath' : new FormControl(buildingManualPath, Validators.required),
-      'kocke': buildingKocke
+      'kocke': buildingKocke,
+      'comments': buildingComments
     });
     console.log(this.buildingForm.get('kocke'));
+    console.log(this.buildingForm.get('comments'));
   }
 
 }

@@ -17,26 +17,26 @@ export class ShoppingListService {
     return this.kocke.slice();
   }
 
-  getIngredient(index: number) {
+  getKocka(index: number) {
     return this.kocke[index];
   }
 
-  addIngredient(ingredient: Kocka) {
+  addKocka(ingredient: Kocka) {
     this.kocke.push(ingredient);
     this.kockaChanged.next(this.kocke.slice());
   }
 
-  addIngredients(ingredients: Kocka[]) {
+  addKocke(ingredients: Kocka[]) {
     this.kocke.push(...ingredients);
     this.kockaChanged.next(this.kocke.slice());
   }
 
-  updateIngredient(index: number, newIngredient: Kocka) {
+  updateKocka(index: number, newIngredient: Kocka) {
     this.kocke[index] = newIngredient;
     this.kockaChanged.next(this.kocke.slice());
   }
 
-  deleteIngredient(index: number) {
+  deleteKocka(index: number) {
     this.kocke.splice(index, 1);
     this.kockaChanged.next(this.kocke.slice());
   }

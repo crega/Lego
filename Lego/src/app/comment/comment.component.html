@@ -1,0 +1,35 @@
+<form [formGroup]="commendForm" (ngSubmit)="saveComment()">
+<div class="row">
+      <div
+        class="row"
+        style="margin-top: 10px;">
+        <div class="col-xs-4">
+          <label>User</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            disabled="true">
+        </div>
+        <div class="col-xs-6">
+          <label>Comment</label>
+          <textarea
+            rows="3"
+            type="text"
+            class="form-control"
+            formControlName="text">
+          </textarea>
+
+        </div>
+        <div class="col-xs-2">
+          <button
+            type="submit"
+            [disabled]="!commendForm.valid"
+            class="btn btn-primary"
+            >Save</button>
+        </div>
+      </div>
+      <hr>
+
+  </div>
+</form>

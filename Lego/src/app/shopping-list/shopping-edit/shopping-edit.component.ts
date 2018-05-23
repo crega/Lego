@@ -30,7 +30,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         (index: number) => {
           this.editedItemIndex = index;
           this.editMode = true;
-          this.editedItem = this.slService.getIngredient(index);
+          this.editedItem = this.slService.getKocka(index);
           this.slForm.setValue({
             name: this.editedItem.dimenzija,
             amount: this.editedItem.kolicina
@@ -43,9 +43,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     const value = form.value;
     const newKocka = new Kocka(value.name, value.amount);
     if (this.editMode) {
-      this.slService.updateIngredient(this.editedItemIndex, newKocka);
+      this.slService.updateKocka(this.editedItemIndex, newKocka);
     } else {
-      this.slService.addIngredient(newKocka);
+      this.slService.addKocka(newKocka);
     }
     this.editMode = false;
     form.reset();
@@ -57,7 +57,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.slService.deleteIngredient(this.editedItemIndex);
+    this.slService.deleteKocka(this.editedItemIndex);
     this.onClear();
   }
 

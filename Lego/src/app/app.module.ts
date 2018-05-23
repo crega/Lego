@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SigninComponent } from './auth/signin/signin.component';
 import { BuildingItemComponent } from './buildings/buildings-list/building-item/building-item.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BuildingItemComponent } from './buildings/buildings-list/building-item/
     BuildingEditComponent,
     BuildingItemComponent,
     BuildingListComponent,
+    CommentComponent,
 
 
 

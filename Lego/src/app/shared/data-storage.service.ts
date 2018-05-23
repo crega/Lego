@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators/';
 import { BuildingsService } from '../buildings/buildings.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Building } from '../buildings/building.model';
+import { CommentService } from '../comment/comment.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Building } from '../buildings/building.model';
 export class DataStorageService {
   constructor(private http: HttpClient,
     private bs: BuildingsService,
+    private comment: CommentService,
     private authService: AuthService) {
   }
 
@@ -31,6 +33,9 @@ export class DataStorageService {
         builds.forEach(element => {
           if (!element['kocke']) {
               element['kocke'] = [];
+          }
+          if (!element['comments']) {
+              element['comments'] = [];
           }
         });
       }

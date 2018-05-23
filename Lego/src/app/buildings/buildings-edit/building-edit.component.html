@@ -71,7 +71,8 @@
             </div>
           </div>
         </div>
-
+        <h4>Building blocks to build structure</h4>
+        <!---->
       <div class="row">
         <div class="col-xs-12" formArrayName="kocke">
           <div
@@ -109,6 +110,40 @@
           </div>
         </div>
       </div>
+      <h4> Comments on this structure</h4>
+      <div class="row">
+          <div class="col-xs-12" formArrayName="comments">
+            <div
+              class="row"
+              *ngFor="let kockaCtrl of buildingForm.get('comments').controls; let i = index"
+              [formGroupName]="i"
+              style="margin-top: 10px;">
+              <div class="col-xs-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="userEmail">
+              </div>
+              <div class="col-xs-6">
+                <textarea
+                  rows="3"
+                  type="text"
+                  class="form-control"
+                  formControlName="text">
+                </textarea>
+
+              </div>
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeleteComment(i)">X</button>
+              </div>
+            </div>
+            <hr>
+
+          </div>
+        </div>
     </form>
   </div>
 </div>

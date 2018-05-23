@@ -30,11 +30,14 @@
     </div>
   </div>
 </div>
+<h4>Description</h4>
 <div class="row">
   <div class="col-xs-12">
     {{ building.description }}
   </div>
 </div>
+<br>
+<h4>Building blocks</h4>
 <div class="row">
   <div class="col-xs-12">
     <ul class="list-group">
@@ -55,3 +58,32 @@
   </div>
 </div>
 
+<div class="row">
+
+  <div class="col-xs-12">
+    <h4><b>Comments</b></h4>
+    <button (click)="addCommentClicked()"
+    type="button"
+    class="btn btn-primary">
+     Add Comment
+  </button>
+  <div *ngIf="flag" class="row">
+    <div class="col-xs-12">
+      <app-comment [idBuilding]="id"></app-comment>
+    </div>
+  </div>
+<br>
+<br>
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              *ngFor="let comment of building.comments">
+              <b>{{ comment.userEmail }}</b> says <br>{{ comment.text }}
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+</div>
